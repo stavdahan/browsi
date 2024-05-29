@@ -13,11 +13,13 @@ domainsRouter.post("/", (req, res) => {
   if (!publisher) {
     return res.status(400).json({ errorMessage: "This user does not exist" });
   }
-
-  if (checkIfDomainExist(url)) {
+  const publisherTheofDomain = checkIfDomainExist(url);
+  if (!!publisherTheofDomain) {
     return res
       .status(400)
-      .json({ errorMessage: "This domain is already exist" });
+      .json({
+        errorMessage: `This domain is already configured on publisher: ${publisherTheofDomain.publisher}`,
+      });
   }
 
   if (parseInt(desktopAds) < 0 || parseInt(mobileAds) < 0) {
@@ -60,11 +62,13 @@ domainsRouter.put("/", (req, res) => {
         "This desktopAds and mobileAds should be greater or equal to zero.",
     });
   }
-  
-  if (checkIfDomainExist(newDomainURL) && url != newDomainURL) {
+  const publisherTheofDomain = checkIfDomainExist(newDomainURL);
+  if (!!publisherTheofDomain && url != newDomainURL) {
     return res
       .status(400)
-      .json({ errorMessage: "This domain is already exist" });
+      .json({
+        errorMessage: `This domain is already configured on publisher: ${publisherTheofDomain.publisher}`,
+      });
   }
 
   const existDomain = publisher.domains.find(
@@ -101,11 +105,11 @@ const checkIfDomainExist = (domainURL) => {
   for (let publisher of publishers) {
     for (let site of publisher.domains) {
       if (site.url.toLowerCase() === domainURL.toLowerCase()) {
-        return true;
+        return publisher;
       }
     }
   }
-  return false;
+  return undefined;
 };
 
 export default domainsRouter;
