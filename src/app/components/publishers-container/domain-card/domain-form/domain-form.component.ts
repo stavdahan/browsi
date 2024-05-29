@@ -62,11 +62,11 @@ export class DomainFormComponent {
   handleOnCancel(e: Event) {
     if (this.isNewDomain) {
       this.toggleEdit();
+      this.toggleAdd();
       this.publisher.domains.shift();
     } else {
       this.handleOnDelete(e);
     }
-    this.toggleAdd();
   }
 
   addDomain() {
