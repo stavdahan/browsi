@@ -1,0 +1,48 @@
+<form class="domainForm" (ngSubmit)="handleOnsubmit()" name="domainForm">
+  <div class="detailsRows">
+    <div class="detailsRow">
+      <label class="detailsLabel" for="domainAdderssField">Domain URL:</label>
+      <input
+        class="detailsInput"
+        type="text"
+        id="domainAdderssField"
+        [(ngModel)]="domainInput"
+        name="domainAdderss"
+        [readOnly]="!isEdit"
+         maxlength="25"
+      />
+    </div>
+    <div class="detailsRow">
+      <label class="detailsLabel" for="mobileAdsField">Mobile Ads:</label>
+      <input
+        class="detailsInput"
+        type="number"
+        id="mobileAdsField"
+        [(ngModel)]="mobileAdsInput"
+        name="mobileAds"
+        [readOnly]="!isEdit"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="10"
+      />
+    </div>
+    <div class="detailsRow">
+      <label class="detailsLabel" for="desktopAdsField">Desktop Ads:</label>
+      <input
+        class="detailsInput"
+        type="number"
+        pattern="[0-9]*"
+        id="desktopAdsField"
+        [(ngModel)]="desktopAdsInput"
+        name="desktopAds"
+        [readOnly]="!isEdit"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="10"
+      />
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="saveBtn" *ngIf="isEdit" type="submit">Save</button>
+    <button class="deleteBtn" *ngIf="isEdit" (click)="handleOnDelete($event)">Delete</button>
+    <button class="cancelBtn" *ngIf="isEdit" (click)="handleOnCancel($event)">Cancel</button>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<div>
+  <div class="publisherHeader">
+    <h1 class="publisherDetails">
+      Publisher: {{ publisher.publisher }} ({{ publisher.domains.length }})
+    </h1>
+    <div class="buttens">
+      <button class="addDomainBtn" *ngIf="!isAdd" (click)="addDomainCardToUI()">
+        Add Domain
+      </button>
+      <button class="deletePublisherBtn" *ngIf="!isAdd" (click)="deletePublisher(publisher.publisher)">
+        Delete Publisher
+      </button>
+    </div>
+  </div>
+  <div class="publisher-card-container">
+    <app-domain-card
+      *ngFor="let domain of publisher.domains"
+      [domain]="domain"
+      [publisher]="publisher"
+      [toggleAdd]="toggleAdd"
+    ></app-domain-card>
+  </div>
+</div>

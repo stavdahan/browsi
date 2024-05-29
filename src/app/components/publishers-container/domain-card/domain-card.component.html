@@ -1,0 +1,13 @@
+<div class="domain-card-container">
+  <app-domain-form
+  [toggleEdit]="toggleEdit"
+    [domain]="domain"
+    [isEdit]="isEdit"
+    [toggleAdd]="toggleAdd"
+    [publisher]="publisher"
+    buttonContent="Edit"
+  ></app-domain-form>
+  <button class="editDomainBtn" *ngIf="!isEdit" (click)="toggleEdit()">
+    Edit
+  </button>
+</div>

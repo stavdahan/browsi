@@ -1,0 +1,40 @@
+.domain-card-container {
+    background-color: #eefef1;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    align-items: center;
+    width: 320px;
+}
+
+.editDomainBtn {
+  font-weight: 400;
+  font-size: 16px;
+  padding: 8px;
+  font-family: sans-serif;
+  cursor: pointer;
+  height: 32px;
+  width: 75px;
+  margin-left: 8px;
+  color: #7bed9f;
+  background-color: #084847;;
+  border: none;
+  border-radius: 16px;
+}
+
+.detail {
+    margin: 0;
+    margin-top: 3.5px;
+    margin-bottom: 3.5px;
+    color: #1e272e;
+    font-family: sans-serif;
+}
+
+app-domain-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

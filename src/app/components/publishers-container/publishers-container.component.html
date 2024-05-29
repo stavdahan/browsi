@@ -1,0 +1,22 @@
+<form class="addPublisherForm" (submit)="addPublisher($event)">
+  <label class="addPublisherLabel" for="publisherNameInput"
+    >Publisher Name:</label
+  >
+  <input
+    class="addPublisherInput"
+    id="publisherNameInput"
+    type="text"
+    placeholder="Please enter publisher name"
+    (input)="onChangeInputPublisher($event)"
+    [value]="publisherName"
+    minlength="2"
+  />
+  <button class="addPublisherBtn" type="submit">Add</button>
+</form>
+<div class="publishers-container">
+  <app-publisher-card
+    *ngFor="let publisher of publishers"
+    [publisher]="publisher"
+    [deletePublisher]="deletePublisher"
+  ></app-publisher-card>
+</div>
